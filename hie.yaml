@@ -1,0 +1,16 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "repl:lib"
+
+    - path: "./app/Main.hs"
+      component: "repl:exe:repl"
+
+    - path: "./app/Paths_repl.hs"
+      component: "repl:exe:repl"
+
+    - path: "./test"
+      component: "repl:test:repl-doctest"
+
+    - path: "./test"
+      component: "repl:test:repl-test"
