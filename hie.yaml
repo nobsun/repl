@@ -3,6 +3,12 @@ cradle:
     - path: "./src"
       component: "repl:lib"
 
+    - path: "./app/interact/Main.hs"
+      component: "repl:exe:interact"
+
+    - path: "./app/interact/Paths_repl.hs"
+      component: "repl:exe:interact"
+
     - path: "./app/Main.hs"
       component: "repl:exe:repl"
 

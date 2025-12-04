@@ -73,6 +73,14 @@ library:
   source-dirs: src
 
 executables:
+  interact:
+    main:               Main.hs
+    source-dirs:        app/interact
+    ghc-options:
+    - -rtsopts
+    dependencies:
+    - repl
+
   repl:
     main:                Main.hs
     source-dirs:         app

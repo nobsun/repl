@@ -10,7 +10,10 @@
 {-# LANGUAGE OverloadedRecordDot, NoFieldSelectors, DuplicateRecordFields #-}
 module Main where
 
+import Interact2
+
 main :: IO ()
-main = do
-    { return ()
-    }
+main = let
+    ?history = Just "repl.log"
+    ?prompt  = "> "
+    in interact' id
