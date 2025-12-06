@@ -10,10 +10,12 @@
 {-# LANGUAGE OverloadedRecordDot, NoFieldSelectors, DuplicateRecordFields #-}
 module Main where
 
+import Data.List.Split
 import Interact2
+import Token
 
 main :: IO ()
 main = let
     ?history = Just "repl.log"
     ?prompt  = "> "
-    in interact' id
+    in interact' (unlines . map (show . clex (1,1)) . splitOn ";")

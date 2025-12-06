@@ -1,5 +1,5 @@
 -- # Interact2
--- 入力をEOLで分割
+-- Haskeline を使用して簡単な行編集が可能にする
 {-# LANGUAGE GHC2024 #-}
 {-# LANGUAGE ImplicitParams #-}
 {-# LANGUAGE ImportQualifiedPost #-}
@@ -16,7 +16,6 @@ module Interact2
 
 import System.IO.Unsafe
 import System.Console.Haskeline
-
 
 interact' :: ( ?history :: Maybe FilePath
              , ?prompt  :: String )
