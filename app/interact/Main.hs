@@ -11,11 +11,12 @@
 module Main where
 
 import Data.List.Split
-import Interact2
+import Interact
 import Token
 
 main :: IO ()
-main = let
-    ?history = Just "repl.log"
-    ?prompt  = "> "
-    in interact' (unlines . map (show . clex (1,1)) . splitOn ";")
+main 
+    = let 
+        ?history = Just "repl.log"
+        ?prompt  = "> "
+      in  interact' (unlines . map (show . clex (1,1)) . splitOn ";")

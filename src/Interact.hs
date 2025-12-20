@@ -10,7 +10,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE OverloadedRecordDot, NoFieldSelectors, DuplicateRecordFields #-}
 
-module Interact2
+module Interact
     ( interact'
     ) where
 
@@ -21,10 +21,16 @@ interact' :: ( ?history :: Maybe FilePath
              , ?prompt  :: String )
           => (String -> String)
           -> IO ()
-interact' f =  putStr . f . unlines =<< loop where
-    loop :: IO [String]
-    loop = unsafeInterleaveIO 
-         $ maybe (return []) ((<$> loop) . (:)) 
-           =<< runInputT (defaultSettings { historyFile = ?history }) 
-                         (getInputLine ?prompt)
+interact' f =  putStr . f . unlines =<< readIter
+
+readIter :: ( ?history :: Maybe FilePath
+            , ?prompt  :: String )
+         => IO [String]
+readIter = loop
+    where
+        loop :: IO [String]
+        loop = unsafeInterleaveIO
+             $ maybe (return []) ((<$> loop) . (:)) 
+               =<< runInputT (defaultSettings { historyFile = ?history }) 
+                             (getInputLine ?prompt)
 
